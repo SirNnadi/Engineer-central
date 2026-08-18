@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    padding: 20px;
+  }
+
+  .login-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    padding: 40px 32px;
+  }
+
+  .login-card h1 {
+    margin: 0 0 4px;
+    font-size: 24px;
+    color: #1e293b;
+    text-align: center;
+  }
+
+  .login-card p.subtitle {
+    margin: 0 0 28px;
+    font-size: 14px;
+    color: #64748b;
+    text-align: center;
+  }
+
+  .field {
+    margin-bottom: 18px;
+  }
+
+  .field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+  }
+
+  .field input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .field input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  }
+
+  .options-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    font-size: 13px;
+  }
+
+  .options-row label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #475569;
+    cursor: pointer;
+  }
+
+  .options-row a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+
+  .options-row a:hover {
+    text-decoration: underline;
+  }
+
+  .login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .login-btn:hover {
+    background: #4338ca;
+  }
+
+  .error-message {
+    display: none;
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  .signup-link {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+  }
+
+  .signup-link a {
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h1>Student Login</h1>
+    <p class="subtitle">Sign in to access your student dashboard</p>
+
+    <div class="error-message" id="errorMessage">
+      Please enter a valid student ID and password.
+    </div>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="studentId">Student ID or Email</label>
+        <input type="text" id="studentId" name="studentId" placeholder="e.g. S1234567 or you@school.edu" required>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      <div class="options-row">
+        <label>
+          <input type="checkbox" id="rememberMe" name="rememberMe">
+          Remember me
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="login-btn">Log In</button>
+    </form>
+
+    <p class="signup-link">Don't have an account? <a href="#">Register here</a></p>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const studentId = document.getElementById('studentId').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!studentId || !password) {
+        errorMessage.style.display = 'block';
+        return;
+      }
+
+      errorMessage.style.display = 'none';
+      alert('Login submitted for: ' + studentId);
+      // Replace the block above with an actual authentication request.
+    });
+  </script>
+
+</body>
+</html>
